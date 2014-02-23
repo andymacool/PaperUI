@@ -19,6 +19,13 @@
 		B33DDBC718AECEE200134BFC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B33DDBAF18AECEE200134BFC /* UIKit.framework */; };
 		B33DDBCF18AECEE200134BFC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B33DDBCD18AECEE200134BFC /* InfoPlist.strings */; };
 		B33DDBD118AECEE200134BFC /* PaperUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B33DDBD018AECEE200134BFC /* PaperUITests.m */; };
+		B33DDBDC18AECF0100134BFC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33DDBDB18AECF0100134BFC /* MainViewController.m */; };
+		B33DDBE218AED27E00134BFC /* SingleNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33DDBE118AED27E00134BFC /* SingleNewsViewController.m */; };
+		B3C4C4A818B5703A002DC38F /* NewsFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C4C4A718B5703A002DC38F /* NewsFetcher.m */; };
+		B3C4C4AB18B57892002DC38F /* UIView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C4C4AA18B57892002DC38F /* UIView+Util.m */; };
+		B3CFD75E18BAACD100052CC9 /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CFD75D18BAACD100052CC9 /* News.m */; };
+		B3CFD76518BAAE5D00052CC9 /* NewsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CFD76418BAAE5D00052CC9 /* NewsCollectionViewController.m */; };
+		B3CFD76818BAB07300052CC9 /* NewsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CFD76718BAB07300052CC9 /* NewsCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +55,20 @@
 		B33DDBCC18AECEE200134BFC /* PaperUITests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PaperUITests-Info.plist"; sourceTree = "<group>"; };
 		B33DDBCE18AECEE200134BFC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B33DDBD018AECEE200134BFC /* PaperUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaperUITests.m; sourceTree = "<group>"; };
+		B33DDBDA18AECF0100134BFC /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		B33DDBDB18AECF0100134BFC /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		B33DDBE018AED27E00134BFC /* SingleNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleNewsViewController.h; sourceTree = "<group>"; };
+		B33DDBE118AED27E00134BFC /* SingleNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleNewsViewController.m; sourceTree = "<group>"; };
+		B3C4C4A618B5703A002DC38F /* NewsFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFetcher.h; sourceTree = "<group>"; };
+		B3C4C4A718B5703A002DC38F /* NewsFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFetcher.m; sourceTree = "<group>"; };
+		B3C4C4A918B57892002DC38F /* UIView+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Util.h"; sourceTree = "<group>"; };
+		B3C4C4AA18B57892002DC38F /* UIView+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Util.m"; sourceTree = "<group>"; };
+		B3CFD75C18BAACD100052CC9 /* News.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = News.h; sourceTree = "<group>"; };
+		B3CFD75D18BAACD100052CC9 /* News.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = News.m; sourceTree = "<group>"; };
+		B3CFD76318BAAE5D00052CC9 /* NewsCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsCollectionViewController.h; sourceTree = "<group>"; };
+		B3CFD76418BAAE5D00052CC9 /* NewsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCollectionViewController.m; sourceTree = "<group>"; };
+		B3CFD76618BAB07300052CC9 /* NewsCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsCollectionViewCell.h; sourceTree = "<group>"; };
+		B3CFD76718BAB07300052CC9 /* NewsCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,8 +128,19 @@
 		B33DDBB118AECEE200134BFC /* PaperUI */ = {
 			isa = PBXGroup;
 			children = (
+				B3C4C4A918B57892002DC38F /* UIView+Util.h */,
+				B3C4C4AA18B57892002DC38F /* UIView+Util.m */,
 				B33DDBBA18AECEE200134BFC /* AppDelegate.h */,
 				B33DDBBB18AECEE200134BFC /* AppDelegate.m */,
+				B3CFD75F18BAACDA00052CC9 /* Model */,
+				B33DDBDA18AECF0100134BFC /* MainViewController.h */,
+				B33DDBDB18AECF0100134BFC /* MainViewController.m */,
+				B3CFD76318BAAE5D00052CC9 /* NewsCollectionViewController.h */,
+				B3CFD76418BAAE5D00052CC9 /* NewsCollectionViewController.m */,
+				B3CFD76618BAB07300052CC9 /* NewsCollectionViewCell.h */,
+				B3CFD76718BAB07300052CC9 /* NewsCollectionViewCell.m */,
+				B33DDBE018AED27E00134BFC /* SingleNewsViewController.h */,
+				B33DDBE118AED27E00134BFC /* SingleNewsViewController.m */,
 				B33DDBBD18AECEE200134BFC /* Images.xcassets */,
 				B33DDBB218AECEE200134BFC /* Supporting Files */,
 			);
@@ -142,6 +174,17 @@
 				B33DDBCD18AECEE200134BFC /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B3CFD75F18BAACDA00052CC9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B3C4C4A618B5703A002DC38F /* NewsFetcher.h */,
+				B3C4C4A718B5703A002DC38F /* NewsFetcher.m */,
+				B3CFD75C18BAACD100052CC9 /* News.h */,
+				B3CFD75D18BAACD100052CC9 /* News.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,8 +282,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3CFD76818BAB07300052CC9 /* NewsCollectionViewCell.m in Sources */,
+				B3C4C4AB18B57892002DC38F /* UIView+Util.m in Sources */,
+				B3CFD76518BAAE5D00052CC9 /* NewsCollectionViewController.m in Sources */,
+				B3CFD75E18BAACD100052CC9 /* News.m in Sources */,
 				B33DDBBC18AECEE200134BFC /* AppDelegate.m in Sources */,
+				B33DDBDC18AECF0100134BFC /* MainViewController.m in Sources */,
 				B33DDBB818AECEE200134BFC /* main.m in Sources */,
+				B3C4C4A818B5703A002DC38F /* NewsFetcher.m in Sources */,
+				B33DDBE218AED27E00134BFC /* SingleNewsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +491,7 @@
 				B33DDBD618AECEE200134BFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B33DDBD718AECEE200134BFC /* Build configuration list for PBXNativeTarget "PaperUITests" */ = {
 			isa = XCConfigurationList;
@@ -449,6 +500,7 @@
 				B33DDBD918AECEE200134BFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -31,11 +31,19 @@
 {
     [super viewDidLoad];
     
+    CGFloat x, y, w, h;
+    x = 0;
+    y = 0;
+    w = self.view.bounds.size.width; //320
+    h = 220;
+
+    self.view.bounds = CGRectMake(0, 0, w, h);
+    
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     layout.minimumLineSpacing = 4.0f;
     layout.minimumInteritemSpacing = 0.0f;
-    layout.itemSize = CGSizeMake(140, self.view.bounds.size.height);
+    layout.itemSize = CGSizeMake(140, h);
     
     self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
     self.collectionView.backgroundColor = [UIColor clearColor];
@@ -47,6 +55,7 @@
     self.view.backgroundColor = [UIColor clearColor];
     [self.view addSubview:self.collectionView];
 }
+
 
 #pragma mark - UICollectionViewDataSource
 

@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ Serve as Data Model Object
+ */
+
 @interface News : NSObject
 
 @end

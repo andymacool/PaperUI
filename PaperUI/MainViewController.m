@@ -1,4 +1,4 @@
-//
+    //
 //  MainViewController.m
 //  PaperUI
 //
@@ -8,35 +8,24 @@
 
 #import "MainViewController.h"
 #import "NewsCollectionViewController.h"
-#import "SingleNewsViewController.h"
+#import "SettingsViewController.h"
+#import "SettingsTransitioningAnimator.h"
 #import "UIView+Util.h"
-#import "NewsFetcher.h"
 
-@interface MainViewController () <UIGestureRecognizerDelegate>
+@interface MainViewController () <UIViewControllerTransitioningDelegate>
 @property (nonatomic) NewsCollectionViewController *newsCollectionVC;
-@property (nonatomic) UIPanGestureRecognizer *panGesture;
+@property (nonatomic) UISwipeGestureRecognizer *swipeDownGesture;
+@property (nonatomic) UITapGestureRecognizer *singleTap;
 @end
 
 @implementation MainViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
-{
-    return YES;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
+    self.view.backgroundColor = [UIColor greenColor];
+    
     self.newsCollectionVC = [[NewsCollectionViewController alloc] init];
     
     CGFloat x, y, w, h;
@@ -55,58 +44,66 @@
     f.origin.y = y;
     self.newsCollectionVC.view.frame = f;
     
-    self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-    self.panGesture.minimumNumberOfTouches = 1;
-    self.panGesture.maximumNumberOfTouches = 1;
-    self.panGesture.delegate = self;
-    [self.newsCollectionVC.view addGestureRecognizer:self.panGesture];
+    self.swipeDownGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeDown:)];
+    self.swipeDownGesture.direction = UISwipeGestureRecognizerDirectionDown;
+    self.swipeDownGesture.enabled = YES;
+    [self.view addGestureRecognizer:self.swipeDownGesture];
 
+    self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    self.singleTap.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:self.singleTap];
+    
     [self.view showColoredBordersForSubviews];
 }
 
-#pragma mark - UIPanGestureRecognizer
-- (void)handlePan:(UIPanGestureRecognizer *)recognizer
+#pragma mark - UISwipeGestureRecognizer
+- (IBAction)handleSwipeDown:(UIPanGestureRecognizer *)recognizer
 {
-    switch (recognizer.state)
-    {
-        case UIGestureRecognizerStateBegan:
-        {
-            NSLog(@"******************** BEGIN ********************\n");
-            break;
-        }
-            
-        case UIGestureRecognizerStateChanged:
-        {
-            CGPoint translation = [recognizer translationInView:self.newsCollectionVC.view];
-            NSLog(@"Panning with Translation (%f %f)\n", translation.x, translation.y);
-            
-            // CGPoint location = [recognizer locationInView:self.newsCollectionVC.view];
-            // Preset: a y-translation of 40 will have a zoom of 2.28 from lower-left
-            if (translation.y < 0) {
-                CGFloat scale = MIN(1 + (-1 * translation.y) / 40.0 * 1.28, 3.0);
-                self.newsCollectionVC.view.layer.anchorPoint = CGPointMake(0.0, 1.0);
-                self.newsCollectionVC.view.transform = CGAffineTransformMakeScale(scale, scale);
-                CGRect f = self.newsCollectionVC.view.frame;
-                f.origin.x = 0;
-                f.origin.y = self.view.bounds.size.height - f.size.height;
-                self.newsCollectionVC.view.frame = f;
-            } else {
-                CGFloat scale = 1;
-                self.newsCollectionVC.view.transform = CGAffineTransformMakeScale(scale, scale);
-            }
-            break;
-        }
-            
-        case UIGestureRecognizerStateEnded:
-        {
-            NSLog(@"******************** ENDED ********************\n");
-            self.newsCollectionVC.view.transform = CGAffineTransformIdentity;
-            break;
-        }
+    NSLog(@"handleSwipeDown ... \n");
+    SettingsViewController *settingsVC = [[SettingsViewController alloc] init];
+    settingsVC.modalPresentationStyle = UIModalPresentationCustom;
+    settingsVC.transitioningDelegate = self;
+    [self presentViewController:settingsVC animated:YES completion:^{
+        self.swipeDownGesture.enabled = NO;
+        NSLog(@"Presented SettingsVC: MainVC.view is %@, SettingsVC.view is %@ \n", self.view, settingsVC.view);
+    }];
+}
 
-        default:
-            break;
-    }
+#pragma mark - UIPanGestureRecognizer
+- (IBAction)handleSingleTap:(UITapGestureRecognizer *)recognizer
+{
+    [UIView animateWithDuration:1.0
+                          delay:0.0
+         usingSpringWithDamping:1.0
+          initialSpringVelocity:0.0
+                        options:UIViewAnimationOptionCurveLinear
+                     animations:^{
+                         
+                         self.view.frame = CGRectMake(0, 0, 320, 568);
+                         
+                     } completion:^(BOOL finished) {
+                         
+                         [self dismissViewControllerAnimated:NO completion:^{
+                             self.swipeDownGesture.enabled = YES;
+                         }];
+                     }];
+}
+
+#pragma mark - UIViewControllerTransitioningDelegate
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
+                                                                  presentingController:(UIViewController *)presenting
+                                                                      sourceController:(UIViewController *)source
+{
+    SettingsTransitioningAnimator *animator = [[SettingsTransitioningAnimator alloc] init];
+    animator.isPresenting = YES;
+    return animator;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
+{
+    SettingsTransitioningAnimator *animator = [[SettingsTransitioningAnimator alloc] init];
+    animator.isPresenting = NO;
+    return animator;
 }
 
 @end

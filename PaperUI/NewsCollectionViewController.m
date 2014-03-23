@@ -11,9 +11,11 @@
 
 @interface NewsCollectionViewController () <UICollectionViewDataSource,
                                             UICollectionViewDelegate,
-                                            UICollectionViewDelegateFlowLayout>
+                                            UICollectionViewDelegateFlowLayout,
+                                            UIGestureRecognizerDelegate>
 
 @property (nonatomic) UICollectionView *collectionView;
+@property (nonatomic) UIPanGestureRecognizer *panGesture;
 @end
 
 @implementation NewsCollectionViewController
@@ -52,6 +54,12 @@
     [self.collectionView registerClass:[NewsCollectionViewCell class]
             forCellWithReuseIdentifier:[NewsCollectionViewCell reuseIdentifier]];
     
+    self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+    self.panGesture.minimumNumberOfTouches = 1;
+    self.panGesture.maximumNumberOfTouches = 1;
+    self.panGesture.delegate = self;
+    [self.view addGestureRecognizer:self.panGesture];
+
     self.view.backgroundColor = [UIColor clearColor];
     [self.view addSubview:self.collectionView];
 }
@@ -80,6 +88,56 @@
 }
 
 #pragma mark - UICollectionViewDelegate
+
+
+
+
+
+#pragma mark - UIPanGestureRecognizer
+
+- (IBAction)handlePan:(UIPanGestureRecognizer *)recognizer
+{
+    switch (recognizer.state)
+    {
+        case UIGestureRecognizerStateBegan:
+        {
+            NSLog(@"******************** BEGIN ********************\n");
+            break;
+        }
+            
+        case UIGestureRecognizerStateChanged:
+        {
+            CGPoint translation = [recognizer translationInView:self.view];
+            NSLog(@"Panning with Translation (%f %f)\n", translation.x, translation.y);
+            
+            // CGPoint location = [recognizer locationInView:self.newsCollectionVC.view];
+            // Preset: a y-translation of 40 will have a zoom of 2.28 from lower-left
+            if (translation.y < 0) {
+                CGFloat scale = MIN(1 + (-1 * translation.y) / 40.0 * 1.28, 3.0);
+                self.view.layer.anchorPoint = CGPointMake(0.0, 1.0);
+                self.view.transform = CGAffineTransformMakeScale(scale, scale);
+                CGRect f = self.view.frame;
+                f.origin.x = 0;
+                f.origin.y = self.view.superview.bounds.size.height - f.size.height;
+                self.view.frame = f;
+            } else {
+                CGFloat scale = 1;
+                self.view.transform = CGAffineTransformMakeScale(scale, scale);
+            }
+            break;
+        }
+            
+        case UIGestureRecognizerStateEnded:
+        {
+            NSLog(@"******************** ENDED ********************\n");
+            self.view.transform = CGAffineTransformIdentity;
+            break;
+        }
+            
+        default:
+            break;
+    }
+}
 
 
 @end

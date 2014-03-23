@@ -21,6 +21,8 @@
 		B33DDBD118AECEE200134BFC /* PaperUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B33DDBD018AECEE200134BFC /* PaperUITests.m */; };
 		B33DDBDC18AECF0100134BFC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33DDBDB18AECF0100134BFC /* MainViewController.m */; };
 		B33DDBE218AED27E00134BFC /* SingleNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33DDBE118AED27E00134BFC /* SingleNewsViewController.m */; };
+		B3BFF52918DCEC0400712798 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BFF52818DCEC0400712798 /* SettingsViewController.m */; };
+		B3BFF52C18DCEF6600712798 /* SettingsTransitioningAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BFF52B18DCEF6600712798 /* SettingsTransitioningAnimator.m */; };
 		B3C4C4A818B5703A002DC38F /* NewsFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C4C4A718B5703A002DC38F /* NewsFetcher.m */; };
 		B3C4C4AB18B57892002DC38F /* UIView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C4C4AA18B57892002DC38F /* UIView+Util.m */; };
 		B3CFD75E18BAACD100052CC9 /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CFD75D18BAACD100052CC9 /* News.m */; };
@@ -59,6 +61,10 @@
 		B33DDBDB18AECF0100134BFC /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		B33DDBE018AED27E00134BFC /* SingleNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleNewsViewController.h; sourceTree = "<group>"; };
 		B33DDBE118AED27E00134BFC /* SingleNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleNewsViewController.m; sourceTree = "<group>"; };
+		B3BFF52718DCEC0400712798 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		B3BFF52818DCEC0400712798 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		B3BFF52A18DCEF6600712798 /* SettingsTransitioningAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTransitioningAnimator.h; sourceTree = "<group>"; };
+		B3BFF52B18DCEF6600712798 /* SettingsTransitioningAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTransitioningAnimator.m; sourceTree = "<group>"; };
 		B3C4C4A618B5703A002DC38F /* NewsFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFetcher.h; sourceTree = "<group>"; };
 		B3C4C4A718B5703A002DC38F /* NewsFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFetcher.m; sourceTree = "<group>"; };
 		B3C4C4A918B57892002DC38F /* UIView+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Util.h"; sourceTree = "<group>"; };
@@ -134,6 +140,10 @@
 				B33DDBBB18AECEE200134BFC /* AppDelegate.m */,
 				B33DDBDA18AECF0100134BFC /* MainViewController.h */,
 				B33DDBDB18AECF0100134BFC /* MainViewController.m */,
+				B3BFF52718DCEC0400712798 /* SettingsViewController.h */,
+				B3BFF52818DCEC0400712798 /* SettingsViewController.m */,
+				B3BFF52A18DCEF6600712798 /* SettingsTransitioningAnimator.h */,
+				B3BFF52B18DCEF6600712798 /* SettingsTransitioningAnimator.m */,
 				B3BFF52618DCE9D300712798 /* Feed */,
 				B33DDBE018AED27E00134BFC /* SingleNewsViewController.h */,
 				B33DDBE118AED27E00134BFC /* SingleNewsViewController.m */,
@@ -305,8 +315,10 @@
 				B33DDBBC18AECEE200134BFC /* AppDelegate.m in Sources */,
 				B33DDBDC18AECF0100134BFC /* MainViewController.m in Sources */,
 				B33DDBB818AECEE200134BFC /* main.m in Sources */,
+				B3BFF52918DCEC0400712798 /* SettingsViewController.m in Sources */,
 				B3C4C4A818B5703A002DC38F /* NewsFetcher.m in Sources */,
 				B33DDBE218AED27E00134BFC /* SingleNewsViewController.m in Sources */,
+				B3BFF52C18DCEF6600712798 /* SettingsTransitioningAnimator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,7 +393,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -414,7 +426,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

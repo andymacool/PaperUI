@@ -72,7 +72,7 @@
 #pragma mark - UIPanGestureRecognizer
 - (IBAction)handleSingleTap:(UITapGestureRecognizer *)recognizer
 {
-    [UIView animateWithDuration:1.0
+    [UIView animateWithDuration:0.5
                           delay:0.0
          usingSpringWithDamping:1.0
           initialSpringVelocity:0.0

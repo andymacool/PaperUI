@@ -8,7 +8,7 @@
 
 #import "SettingsTransitioningAnimator.h"
 
-static const CGFloat SettingsTransitioningAnimatorDuration = 1.0;
+static const CGFloat SettingsTransitioningAnimatorDuration = 0.7;
 
 @implementation SettingsTransitioningAnimator
 
@@ -40,7 +40,7 @@ static const CGFloat SettingsTransitioningAnimatorDuration = 1.0;
 
         [UIView animateWithDuration:SettingsTransitioningAnimatorDuration
                               delay:0.0
-             usingSpringWithDamping:1.0
+             usingSpringWithDamping:0.7
               initialSpringVelocity:0.0
                             options:UIViewAnimationOptionCurveLinear
                          animations:^{

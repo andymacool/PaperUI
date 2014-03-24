@@ -31,13 +31,13 @@ static const CGFloat SettingsTransitioningAnimatorDuration = 0.7;
         [[transitionContext containerView] addSubview:toViewController.view];
         [[transitionContext containerView] addSubview:fromViewController.view];
 
-        toViewController.view.frame = CGRectMake(0, 0, 320, 568);
+        // toViewController.view.frame = CGRectMake(0, 0, 320, 568);
         toViewController.view.transform = CGAffineTransformMakeScale(0.95, 0.95);
         toViewController.view.alpha = 0.5;
 
         CGRect f = fromViewController.view.frame;
         f.origin.y = 500;
-
+        
         [UIView animateWithDuration:SettingsTransitioningAnimatorDuration
                               delay:0.0
              usingSpringWithDamping:0.7
@@ -46,8 +46,8 @@ static const CGFloat SettingsTransitioningAnimatorDuration = 0.7;
                          animations:^{
 
                              // move down the fromVC
-                             fromViewController.view.frame = f;
-                             
+                             // fromViewController.view.frame = f;
+                             fromViewController.view.transform = CGAffineTransformMakeTranslation(0, 500);
                              toViewController.view.transform = CGAffineTransformIdentity;
                              toViewController.view.alpha = 1.0;
                              
@@ -55,10 +55,13 @@ static const CGFloat SettingsTransitioningAnimatorDuration = 0.7;
                              [transitionContext completeTransition:YES];
                          }];
     } else {
-        
-        NSLog(@"Dismissing SettingsVC: MainVC.view is %@, SettingsVC.view is %@ \n", toViewController.view, fromViewController.view);
 
-        CGRect endFrame = CGRectMake(0, 100, 320, 568);
+        NSLog(@"Animated Dismissing SettingsVC: MainVC.view is %@, SettingsVC.view is %@ \n", toViewController.view, fromViewController.view);
+//        [[transitionContext containerView] addSubview:toViewController.view];
+//        [[transitionContext containerView] addSubview:fromViewController.view];
+
+        toViewController.view.frame = CGRectMake(0, 500, 320, 568);
+        CGRect endFrame = CGRectMake(0, 0, 320, 568);
         
         [UIView animateWithDuration:2.0
                               delay:0.0

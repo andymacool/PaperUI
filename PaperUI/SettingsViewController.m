@@ -14,15 +14,6 @@
 
 @implementation SettingsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        self.modalPresentationStyle = UIModalPresentationCustom;
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -31,7 +22,7 @@
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
     singleTap.numberOfTapsRequired = 1;
-    [self.view addGestureRecognizer:singleTap];
+    //[self.view addGestureRecognizer:singleTap];
 }
 
 - (void)dismiss

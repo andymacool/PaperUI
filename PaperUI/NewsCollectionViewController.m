@@ -8,14 +8,18 @@
 
 #import "NewsCollectionViewController.h"
 #import "NewsCollectionViewCell.h"
+#import "SingleNewsViewController.h"
+#import "SingleNewsTransitioningAnimator.h"
 
 @interface NewsCollectionViewController () <UICollectionViewDataSource,
                                             UICollectionViewDelegate,
                                             UICollectionViewDelegateFlowLayout,
-                                            UIGestureRecognizerDelegate>
+                                            UIGestureRecognizerDelegate,
+                                            UIViewControllerTransitioningDelegate>
 
 @property (nonatomic) UICollectionView *collectionView;
 @property (nonatomic) UIPanGestureRecognizer *panGesture;
+@property (nonatomic) CGRect selectedCellFrame;
 @end
 
 @implementation NewsCollectionViewController
@@ -58,12 +62,11 @@
     self.panGesture.minimumNumberOfTouches = 1;
     self.panGesture.maximumNumberOfTouches = 1;
     self.panGesture.delegate = self;
-    [self.view addGestureRecognizer:self.panGesture];
+    //[self.collectionView addGestureRecognizer:self.panGesture];
 
     self.view.backgroundColor = [UIColor clearColor];
     [self.view addSubview:self.collectionView];
 }
-
 
 #pragma mark - UICollectionViewDataSource
 
@@ -89,9 +92,16 @@
 
 #pragma mark - UICollectionViewDelegate
 
-
-
-
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIView *selectedCellView = [self.collectionView cellForItemAtIndexPath:indexPath];
+    self.selectedCellFrame = [selectedCellView convertRect:selectedCellView.bounds toView:nil];    
+    
+    SingleNewsViewController *singleNewsVC = [[SingleNewsViewController alloc] initWithUniqueID:[NSString stringWithFormat:@"%d", indexPath.item]];
+    singleNewsVC.transitioningDelegate = self;
+    singleNewsVC.modalPresentationStyle = UIModalPresentationCustom;
+    [self presentViewController:singleNewsVC animated:YES completion:nil];
+}
 
 #pragma mark - UIPanGestureRecognizer
 
@@ -139,5 +149,23 @@
     }
 }
 
+#pragma mark - UIViewControllerTransitioningDelegate
+- (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
+                                                                   presentingController:(UIViewController *)presenting
+                                                                       sourceController:(UIViewController *)source
+{
+    SingleNewsTransitioningAnimator *animator = [[SingleNewsTransitioningAnimator alloc] init];
+    animator.isPresenting = YES;
+    animator.startingFrame = self.selectedCellFrame;
+    return animator;
+}
+
+- (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
+{
+    SingleNewsTransitioningAnimator *animator = [[SingleNewsTransitioningAnimator alloc] init];
+    animator.isPresenting = NO;
+    animator.startingFrame = self.selectedCellFrame;
+    return animator;
+}
 
 @end

@@ -45,7 +45,7 @@
     w = self.contentView.bounds.size.width - 2 * x;
     h = 20;
     
-    self.titleLabel.frame = CGRectMake(x, y, w, h);
+    self.titleLabel.frame = CGRectMake(0, 0, w, h);
 }
 
 @end

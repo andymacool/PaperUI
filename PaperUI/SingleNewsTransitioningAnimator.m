@@ -8,7 +8,7 @@
 
 #import "SingleNewsTransitioningAnimator.h"
 
-static const CGFloat SingleNewsTransitioningAnimatorDuration = 0.7;
+static const NSTimeInterval SingleNewsTransitioningAnimatorDuration = 0.7;
 
 @implementation SingleNewsTransitioningAnimator
 

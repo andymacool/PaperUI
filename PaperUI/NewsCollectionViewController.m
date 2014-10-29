@@ -86,7 +86,7 @@
     NewsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[NewsCollectionViewCell reuseIdentifier]
                                                                              forIndexPath:indexPath];
     cell.backgroundColor = [UIColor yellowColor];
-    cell.titleLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
+    cell.titleLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
     return cell;
 }
 
@@ -97,7 +97,7 @@
     UIView *selectedCellView = [self.collectionView cellForItemAtIndexPath:indexPath];
     self.selectedCellFrame = [selectedCellView convertRect:selectedCellView.bounds toView:nil];    
     
-    SingleNewsViewController *singleNewsVC = [[SingleNewsViewController alloc] initWithUniqueID:[NSString stringWithFormat:@"%d", indexPath.item]];
+    SingleNewsViewController *singleNewsVC = [[SingleNewsViewController alloc] initWithUniqueID:[NSString stringWithFormat:@"%ld", (long)indexPath.item]];
     singleNewsVC.transitioningDelegate = self;
     singleNewsVC.modalPresentationStyle = UIModalPresentationCustom;
     [self presentViewController:singleNewsVC animated:YES completion:nil];
